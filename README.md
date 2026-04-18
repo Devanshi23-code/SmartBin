@@ -80,7 +80,7 @@ A **Smart Bin Monitoring System** that uses IoT + real-time analytics to optimiz
 - FastAPI (Python)
 
 ### Database
-- SQLite / PostgreSQL
+- PostgreSQL
 
 ### Hardware
 - ESP32 / Arduino  
