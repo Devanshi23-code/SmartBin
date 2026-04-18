@@ -67,19 +67,21 @@ export default function Workers() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6">
+    <div className="min-h-screen bg-gray-50 p-6">
 
-      <h1 className="text-3xl font-bold mb-6">Workers</h1>
+      <h1 className="text-3xl font-bold mb-6 text-gray-800">
+        Workers
+      </h1>
 
       {/* 🔹 Add Worker */}
-      <div className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl mb-6 space-y-4">
+      <div className="bg-white shadow-md p-6 rounded-xl mb-6 space-y-4">
         <input
           type="text"
           name="name"
           placeholder="Worker Name"
           value={form.name}
           onChange={handleChange}
-          className="w-full p-2 rounded bg-gray-800"
+          className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
         <input
@@ -88,12 +90,12 @@ export default function Workers() {
           placeholder="Area"
           value={form.area}
           onChange={handleChange}
-          className="w-full p-2 rounded bg-gray-800"
+          className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
         />
 
         <button
           onClick={addWorker}
-          className="bg-green-500 px-4 py-2 rounded hover:bg-green-600"
+          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
         >
           Add Worker
         </button>
@@ -102,26 +104,26 @@ export default function Workers() {
       {/* 🔹 Workers List */}
       <div className="space-y-6">
         {workers.length === 0 ? (
-          <p className="text-gray-400">No workers yet</p>
+          <p className="text-gray-500">No workers yet</p>
         ) : (
           workers.map((worker) => (
             <div
               key={worker.id}
-              className="bg-white/10 backdrop-blur-lg p-5 rounded-2xl"
+              className="bg-white shadow-md p-5 rounded-xl"
             >
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <div>
-                  <h2 className="text-xl font-semibold">
+                  <h2 className="text-xl font-semibold text-gray-800">
                     {worker.name}
                   </h2>
-                  <p className="text-gray-400">
+                  <p className="text-gray-500">
                     Area: {worker.area}
                   </p>
                 </div>
 
                 <button
                   onClick={() => deleteWorker(worker.id)}
-                  className="text-red-400 hover:text-red-600"
+                  className="text-red-500 hover:text-red-600"
                 >
                   Delete
                 </button>
@@ -139,12 +141,12 @@ export default function Workers() {
                       [worker.id]: e.target.value,
                     })
                   }
-                  className="p-2 rounded bg-gray-800 w-full"
+                  className="p-2 border border-gray-300 rounded w-full focus:outline-none focus:ring-2 focus:ring-green-500"
                 />
 
                 <button
                   onClick={() => assignBin(worker.id)}
-                  className="bg-blue-500 px-3 rounded hover:bg-blue-600"
+                  className="bg-green-500 text-white px-3 rounded hover:bg-green-600"
                 >
                   Assign
                 </button>
@@ -152,12 +154,12 @@ export default function Workers() {
 
               {/* 🔸 Assigned Bins */}
               <div className="mt-3">
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-500">
                   Assigned Bins:
                 </p>
 
                 {worker.bins.length === 0 ? (
-                  <p className="text-xs text-gray-500 mt-2">
+                  <p className="text-xs text-gray-400 mt-2">
                     No bins yet
                   </p>
                 ) : (
@@ -165,14 +167,14 @@ export default function Workers() {
                     {worker.bins.map((bin, i) => (
                       <span
                         key={i}
-                        className="bg-green-500/20 px-2 py-1 rounded flex items-center gap-2"
+                        className="bg-green-100 text-green-700 px-2 py-1 rounded flex items-center gap-2"
                       >
                         {bin}
                         <button
                           onClick={() =>
                             removeBin(worker.id, i)
                           }
-                          className="text-red-400 text-xs"
+                          className="text-red-500 text-xs"
                         >
                           ✕
                         </button>

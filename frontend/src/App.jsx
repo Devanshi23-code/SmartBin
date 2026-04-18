@@ -2,14 +2,14 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import Dashboard from "./pages/Dashboard";
 import Alerts from "./pages/Alerts";
-import Profile from "./pages/Profile";
 import Workers from "./pages/Workers";
+import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import Layout from "./components/Layout";
 
-const PrivateRoute = ({ children }) => {
-  const user = localStorage.getItem("user");
-  return user ? children : <Navigate to="/login" />;
+// 🔐 Check login
+const isLoggedIn = () => {
+  return localStorage.getItem("user") !== null;
 };
 
 export default function App() {
@@ -17,20 +17,42 @@ export default function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* Login */}
+        {/* 🔥 ALWAYS START WITH LOGIN */}
+        <Route path="/" element={<Navigate to="/login" />} />
+
+        {/* 🔓 Login */}
         <Route path="/login" element={<Login />} />
 
-        {/* Protected layout */}
-        <Route element={
-          <PrivateRoute>
-            <Layout />
-          </PrivateRoute>
-        }>
+        {/* 🔐 Protected (after login) */}
+        <Route element={<Layout />}>
 
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/workers" element={<Workers />} />
-          <Route path="/alerts" element={<Alerts />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/dashboard"
+            element={
+              isLoggedIn() ? <Dashboard /> : <Navigate to="/login" />
+            }
+          />
+
+          <Route
+            path="/alerts"
+            element={
+              isLoggedIn() ? <Alerts /> : <Navigate to="/login" />
+            }
+          />
+
+          <Route
+            path="/workers"
+            element={
+              isLoggedIn() ? <Workers /> : <Navigate to="/login" />
+            }
+          />
+
+          <Route
+            path="/profile"
+            element={
+              isLoggedIn() ? <Profile /> : <Navigate to="/login" />
+            }
+          />
 
         </Route>
 

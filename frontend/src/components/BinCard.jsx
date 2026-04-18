@@ -1,51 +1,52 @@
 export default function BinCard({ id, location, fill }) {
 
+  let color = "bg-green-500";
   let status = "OK";
-  let color = "#16a34a";
 
   if (fill > 90) {
+    color = "bg-red-500";
     status = "FULL";
-    color = "#dc2626";
   } else if (fill > 70) {
+    color = "bg-yellow-400";
     status = "NEARLY FULL";
-    color = "#f59e0b";
   }
 
   return (
-    <div style={{
-      background: "white",
-      padding: "15px",
-      borderRadius: "12px",
-      marginBottom: "15px",
-      boxShadow: "0 4px 10px rgba(0,0,0,0.1)"
-    }}>
+    <div className="bg-white shadow-md rounded-xl p-4">
 
-      <h3 style={{ margin: 0 }}>Bin {id}</h3>
-      <p style={{ margin: "5px 0", color: "#555" }}>{location}</p>
+      {/* Top */}
+      <div className="flex justify-between items-center">
+        <div>
+          <h3 className="font-semibold text-gray-800">
+            Bin {id}
+          </h3>
+          <p className="text-gray-500 text-sm">
+            {location}
+          </p>
+        </div>
 
-      <div style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center"
-      }}>
-        <span style={{
-          color: color,
-          fontWeight: "bold"
-        }}>
-          {status} ({fill}%)
+        <span className={`${color} text-white px-3 py-1 rounded-full text-xs`}>
+          {status}
         </span>
-
-        <button style={{
-          background: "#10b981",
-          color: "white",
-          border: "none",
-          padding: "6px 10px",
-          borderRadius: "6px",
-          cursor: "pointer"
-        }}>
-          Navigate
-        </button>
       </div>
+
+      {/* Progress */}
+      <div className="mt-3">
+        <div className="w-full bg-gray-200 h-2 rounded-full">
+          <div
+            className={`${color} h-2 rounded-full`}
+            style={{ width: `${fill}%` }}
+          ></div>
+        </div>
+        <p className="text-xs text-gray-500 mt-1">
+          {fill}% full
+        </p>
+      </div>
+
+      {/* Button */}
+      <button className="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+        View Details
+      </button>
 
     </div>
   );
