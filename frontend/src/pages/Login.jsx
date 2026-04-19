@@ -22,7 +22,7 @@ export default function Login() {
 
     } catch (err) {
       // If the backend returns a 401 error, show this message
-      setError("Invalid username or password");
+      setError("Invalid username or password= " + err.response.data.detail);
     }
   };
 
