@@ -1,0 +1,14 @@
+.DS_Store
+*.log
+*.env
+node_modules/
+.env
+.env/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.postman
+postman
+postman/

@@ -23,7 +23,7 @@ def check_system():
 
 @app.post("/login")
 async def login(credentials: LoginRequest):
- if credentials.username == "admin" and credentials.password == "1234":
+ if credentials.username == "admin" and credentials.password == "password":
         return {"user": {"username": "admin", "token": "fake-jwt-token"}}
     
  raise HTTPException(status_code=401, detail="Invalid credentials")
