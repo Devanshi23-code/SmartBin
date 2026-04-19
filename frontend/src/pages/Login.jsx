@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -7,11 +8,20 @@ export default function Login() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    if (username === "admin" && password === "1234") {
-      localStorage.setItem("user", JSON.stringify({ username }));
+  const handleLogin = async() => {
+    try {
+      // Send credentials to your FastAPI backend
+      const response = await axios.post("http://localhost:8000/login", {
+        username,
+        password
+      });
+
+      // If backend returns success, store the user and redirect
+      localStorage.setItem("user", JSON.stringify(response.data.user));
       navigate("/dashboard");
-    } else {
+
+    } catch (err) {
+      // If the backend returns a 401 error, show this message
       setError("Invalid username or password");
     }
   };
