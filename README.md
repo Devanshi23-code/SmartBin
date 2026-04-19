@@ -90,3 +90,60 @@ A **Smart Bin Monitoring System** that uses IoT + real-time analytics to optimiz
 ---
 
 ## 📂 Project Structure
+
+## 📱 How to Use the Application
+
+Follow these steps to use the Smart Bin Monitoring System:
+
+---
+
+### 🔐 1. Login / Signup
+- Open the application in your browser
+- Create a new account using the Signup page  
+  OR  
+- Login using your credentials
+
+---
+
+### 🏠 2. Dashboard (Bin Monitoring)
+- After login, you will see the Dashboard
+- It displays all smart bins with their current status:
+  - 🟢 **OK** → Bin is empty or low
+  - 🟡 **MEDIUM** → Bin is partially filled
+  - 🔴 **FULL** → Bin needs immediate collection
+- Click **Navigate** to view bin location (future integration with maps)
+
+---
+
+### 🚨 3. Alerts Section
+- View bins that are **FULL or critical**
+- Helps workers prioritize waste collection
+- Reduces overflow and improves efficiency
+
+---
+
+### 👤 4. Profile Section
+- View user details
+- Future scope: edit profile & manage settings
+
+---
+
+### 🔄 5. Navigation
+Use the bottom navigation bar to switch between:
+- Dashboard
+- Alerts
+- Profile
+
+---
+
+### 🌐 Running the App Locally
+
+1. Start the frontend: 
+2. Open in browser:
+
+---
+
+### 📱 Access on Mobile (Same WiFi)
+
+1. Run:
+2. Open on phone:
