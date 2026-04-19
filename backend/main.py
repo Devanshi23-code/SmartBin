@@ -17,3 +17,4 @@ app.add_middleware(
 @app.get("/")
 def check_system():
  return {"message": "System is working!"}
+
