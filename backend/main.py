@@ -3,6 +3,8 @@ from typing import List, Optional
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import dotenv
+from fastapi import HTTPException
+from .model import LoginRequest
 # from .config import settings
 dotenv.load_dotenv()
 app = FastAPI()
@@ -18,3 +20,9 @@ app.add_middleware(
 def check_system():
  return {"message": "System is working!"}
 
+@app.post("/login")
+async def login(credentials: LoginRequest):
+ if credentials.username == "admin" and credentials.password == "password":
+        return {"user": {"username": "admin", "token": "fake-jwt-token"}}
+    
+ raise HTTPException(status_code=401, detail="Invalid credentials")
