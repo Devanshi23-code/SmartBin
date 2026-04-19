@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import dotenv, os
 from fastapi import HTTPException
-from .model import LoginRequest
+from model import LoginRequest
 # from .config import settings
 dotenv.load_dotenv()
 app = FastAPI()
